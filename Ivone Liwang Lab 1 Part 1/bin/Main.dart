@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:math';
-import 'package:algorithmic/algorithmic.dart';
 import 'PrintTriangle.dart';
 
 void main() {
@@ -24,4 +23,28 @@ void main() {
       listAngka.shuffle();
   }
   printTrianglePattern(listAngka);
+}
+
+void bubbleSort(List<int> listAngka) {
+  int n = listAngka.length;
+  
+  for (int i = 0; i < n - 1; i++) {
+    // Flag untuk mendeteksi apakah ada pertukaran
+    bool swapped = false;
+    
+    // Looping membandingkan elemen yang bersebelahan
+    for (int j = 0; j < n - i - 1; j++) {
+      if (listAngka[j] > listAngka[j + 1]) {
+        // Tukar posisi jika elemen saat ini lebih besar dari elemen berikutnya
+        int temp = listAngka[j];
+        listAngka[j] = listAngka[j + 1];
+        listAngka[j + 1] = temp;
+        
+        swapped = true; // Set flag menjadi true jika ada pertukaran
+      }
+    }
+    
+    // Jika tidak ada pertukaran, keluar dari loop karena list sudah terurut
+    if (!swapped) break;
+  }
 }
